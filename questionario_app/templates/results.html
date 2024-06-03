@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados</title>
+</head>
+<body>
+    <pre>
+        {{ data|pprint }}
+    </pre>    
+    <h1>Resultados</h1>
+    {% for item in data %}
+        <h2>{{ item.questao.text }}</h2>
+        <ul>
+            {% if item.escolhas %}
+                {% for escolha in item.escolhas %}
+                    <li>{{ escolha.text }}: {{ escolha.vote_count }} votos</li>
+                {% endfor %}
+            {% else %}
+                <li>Resposta: {{item.resposta_texto}}</li>
+            {% endif %}
+        </ul>
+    {% endfor %}
+</body>
+</html>
